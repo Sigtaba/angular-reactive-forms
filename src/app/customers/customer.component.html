@@ -78,7 +78,7 @@
                    type="email"
                    placeholder="Email (required)"
                    formControlName="email"
-                   [ngClass]="{'is-invalid': emailMessage }" />
+                   [ngClass]="{'is-invalid': emailMessage }" /> <!-- good example of simplified validation -->
             <span class="invalid-feedback">
               {{ emailMessage }}
             </span>
@@ -140,8 +140,8 @@
                  id="ratingId"
                  type="number"
                  formControlName="rating"
-                 [ngClass]="{'is-invalid': (customerForm.get('rating').touched || 
-                                             customerForm.get('rating').dirty) && 
+                 [ngClass]="{'is-invalid': (customerForm.get('rating').touched ||
+                                             customerForm.get('rating').dirty) &&
                                              !customerForm.get('rating').valid }" />
           <span class="invalid-feedback">
             <span *ngIf="customerForm.get('rating').errors?.range">
@@ -215,10 +215,10 @@
 
             <div class="form-group row mb-2">
               <label class="col-md-2 col-form-label"
-                    for="street2Id">Street Address 2</label>
+                    attr.for="{{ 'street2Id' + i }}">Street Address 2</label>
               <div class="col-md-8">
                 <input class="form-control"
-                      id="street2Id"
+                      id="{{ 'street2Id' + i }}"
                       type="text"
                       placeholder="Street address (second line)"
                       formControlName="street2">
@@ -227,10 +227,11 @@
 
             <div class="form-group row mb-2">
               <label class="col-md-2 col-form-label"
-                    for="cityId">City, State, Zip Code</label>
+                    attr.for="{{ 'cityId' + i }}">City, State, Zip Code</label>
               <div class="col-md-3">
                 <input class="form-control"
                       id="cityId"
+                      id="{{ 'cityId' + i }}"
                       type="text"
                       placeholder="City"
                       formControlName="city">
